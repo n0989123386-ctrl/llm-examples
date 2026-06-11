@@ -1,28 +1,31 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 
-st.set_page_config(page_title="股市起漲點監控系統", layout="wide")
+st.set_page_config(page_title="裕隆專屬股市監控系統", layout="wide")
 
-st.title("📈 股市起漲點監控系統 1.0")
-st.write("系統已連線，為您監控三竹股市即時數據...")
+# 您的觀察清單
+stock_list = ["0056", "00915", "00918", "00919", "00878", "00929", "2409", "2464", "00403A", "00981A", "00992A"]
 
-# 模擬三竹股市抓取介面
-stock_code = st.text_input("請輸入要監控的股票代號", "2330")
+st.title("📈 裕隆專屬股市起漲點監控系統 1.0")
+st.write("系統已啟動，正在針對您的 12 檔標的進行金水元素協調監控...")
 
-if st.button("開始分析起漲點"):
-    with st.spinner("正在從三竹股市資料庫比對五行協調與量能變化..."):
-        # 這裡未來會串接三竹股市的資料 API 或爬蟲邏輯
-        st.write(f"正在分析代號 {stock_code} 的即時走勢...")
-        
-        # 模擬產出數據報表
-        df = pd.DataFrame({
-            "時間": ["09:00", "09:30", "10:00"],
-            "成交價": [np.random.randint(500, 600), np.random.randint(500, 600), np.random.randint(500, 600)],
-            "買進訊號": ["觀望", "準備起漲", "訊號明確"]
-        })
-        
-        st.dataframe(df, use_container_width=True)
-        st.success("數據分析完成！金水元素協調中，偏財運勢提升！")
+# 顯示觀察清單
+st.subheader("目前監控標的")
+st.write(", ".join(stock_list))
+
+if st.button("刷新即時報價與分析"):
+    with st.spinner("正在連線三竹股市資料庫，比對起漲訊號..."):
+        # 這裡會是未來串接真實數據的地方
+        data = {
+            "標的": stock_list,
+            "狀態": ["監控中" for _ in stock_list],
+            "起漲訊號": ["等待中" for _ in stock_list]
+        }
+        df = pd.DataFrame(data)
+        st.table(df)
+        st.success("數據更新完畢，請留意量能變化。")
+
+st.info("💡 提示：若要更換名單，請隨時編輯程式碼中的 stock_list 變數。")
+
 
 
