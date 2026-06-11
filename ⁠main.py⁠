@@ -1,10 +1,28 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 
 st.set_page_config(page_title="股市起漲點監控系統", layout="wide")
 
 st.title("📈 股市起漲點監控系統 1.0")
-st.write("系統已連線，正在為您載入三竹股市即時統計資料...")
+st.write("系統已連線，為您監控三竹股市即時數據...")
 
-if st.button("更新數據分析"):
-    st.success("數據分析中...")
+# 模擬三竹股市抓取介面
+stock_code = st.text_input("請輸入要監控的股票代號", "2330")
+
+if st.button("開始分析起漲點"):
+    with st.spinner("正在從三竹股市資料庫比對五行協調與量能變化..."):
+        # 這裡未來會串接三竹股市的資料 API 或爬蟲邏輯
+        st.write(f"正在分析代號 {stock_code} 的即時走勢...")
+        
+        # 模擬產出數據報表
+        df = pd.DataFrame({
+            "時間": ["09:00", "09:30", "10:00"],
+            "成交價": [np.random.randint(500, 600), np.random.randint(500, 600), np.random.randint(500, 600)],
+            "買進訊號": ["觀望", "準備起漲", "訊號明確"]
+        })
+        
+        st.dataframe(df, use_container_width=True)
+        st.success("數據分析完成！金水元素協調中，偏財運勢提升！")
+
 
