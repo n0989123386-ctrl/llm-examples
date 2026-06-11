@@ -1,1 +1,10 @@
-import urllib.request; exec(urllib.request.urlopen("https://gist.githubusercontent.com/toby-ai-lab/e3a893cb6fb7080a905a96db5f55325c/raw/隆哥專屬股市起漲點監控系統1.0.py").read())
+import streamlit as st
+
+st.set_page_config(page_title="股市起漲點監控系統", layout="wide")
+
+st.title("📈 股市起漲點監控系統 1.0")
+st.write("系統已連線，正在為您載入三竹股市即時統計資料...")
+
+if st.button("更新數據分析"):
+    st.success("數據分析中...")
+
